@@ -3,7 +3,8 @@ DESTBINDIR=$(PREFIX)/bin
 DESTLIBDIR=$(PREFIX)/lib
 CFLAGS=
 
-BINARIES=test0 test1 test2 test3 test4 test4-2 test4-3
+BINARIES=test0 test1 test2 test3 test4
+BINARIES_AFTER_INSTALL=test4-2 test4-3
 
 all: $(BINARIES)
 
@@ -15,7 +16,7 @@ install: test3 test4
 	libtool --mode=install install -c test4 $(DESTBINDIR)/
 
 clean:
-	rm -rf .libs *.o *.so *.a *.lo *.la $(BINARIES)
+	rm -rf .libs *.o *.so *.a *.lo *.la $(BINARIES) $(BINARIES_AFTER_INSTALL)
 
 test0: test0.o
 	$(CC) -o $@ $>
